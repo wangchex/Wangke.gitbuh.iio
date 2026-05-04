@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Schweikert for Governor</title>
+
+<style>
+:root {
+  --navy: #07558f;
+  --deep-blue: #063f74;
+  --dark-blue: #062b53;
+  --gold: #d6aa3c;
+  --white: #ffffff;
+  --text: #102033;
+  --focus: #ffd700;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: #ffffff;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 5px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 10px;
+  background: var(--focus);
+  color: #000;
+  padding: 12px 18px;
+  font-weight: bold;
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  left: 10px;
+}
+
+/* NAV */
+.header {
+  background: linear-gradient(90deg, var(--navy), var(--dark-blue));
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  padding: 0 34px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 5px solid var(--gold);
+}
+
+.nav {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  gap: 34px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.donate-link {
+  background: var(--gold);
+  color: #071d38 !important;
+  padding: 12px 22px;
+  border-radius: 4px;
+}
+
+/* HERO */
+.hero {
+  min-height: 760px;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(rgba(5, 34, 70, 0.30), rgba(5, 34, 70, 0.30)),
+    url("arizona-bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  left: -10%;
+  bottom: -150px;
+  width: 120%;
+  height: 260px;
+  background: white;
+  border-radius: 50% 50% 0 0;
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 1500px;
+  margin: 0 auto;
+  min-height: 760px;
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  align-items: center;
+  padding: 70px 55px 120px;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, #087bb7, #183b76);
+  color: white;
+  padding: 55px 52px;
+  max-width: 620px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+  border-left: 8px solid var(--gold);
+}
+
+.hero-card h1 {
+  font-size: 54px;
+  line-height: 1.05;
+  margin-bottom: 26px;
+  color: white;
+}
+
+.hero-card p {
+  font-size: 30px;
+  line-height: 1.55;
+  font-weight: 500;
+}
+
+.hero-card strong {
+  font-weight: 900;
+}
+
+.hero-buttons {
+  margin-top: 34px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  min-height: 50px;
+  padding: 13px 24px;
+  text-decoration: none;
+  font-weight: 900;
+  border-radius: 4px;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: #08213f;
+}
+
+.btn-outline {
+  color: white;
+  border: 3px solid white;
+}
+
+.person-wrap {
+  align-self: end;
+  justify-self: end;
+  position: relative;
+  z-index: 4;
+}
+
+.person {
+  width: 560px;
+  max-width: 100%;
+  display: block;
+  filter: drop-shadow(0 18px 28px rgba(0,0,0,0.35));
+}
+
+/* SECTIONS */
+.section {
+  padding: 70px 50px;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.section h2 {
+  color: var(--dark-blue);
+  font-size: 42px;
+  margin-bottom: 16px;
+}
+
+.lead {
+  max-width: 850px;
+  font-size: 21px;
+  margin-bottom: 34px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.card {
+  background: #f7f9fc;
+  border-top: 7px solid var(--gold);
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+  color: var(--deep-blue);
+  font-size: 27px;
+  margin-bottom: 10px;
+}
+
+.accessibility {
+  background: var(--dark-blue);
+  color: white;
+}
+
+.accessibility h2 {
+  color: white;
+}
+
+.accessibility ul {
+  padding-left: 25px;
+  font-size: 20px;
+}
+
+.accessibility li {
+  margin-bottom: 10px;
+}
+
+/* FORM */
+.contact {
+  background: #f1f3f6;
+}
+
+form {
+  max-width: 700px;
+  background: white;
+  padding: 35px;
+  border-left: 8px solid var(--gold);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+label {
+  display: block;
+  font-weight: 900;
+  margin-top: 18px;
+  margin-bottom: 6px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid #444;
+  font-size: 18px;
+}
+
+textarea {
+  min-height: 130px;
+}
+
+button {
+  margin-top: 22px;
+  width: 100%;
+  padding: 15px;
+  background: var(--deep-blue);
+  color: white;
+  border: none;
+  font-weight: 900;
+  font-size: 19px;
+  cursor: pointer;
+}
+
+footer {
+  background: var(--dark-blue);
+  color: white;
+  text-align: center;
+  padding: 32px;
+  border-top: 5px solid var(--gold);
+}
+
+/* MOBILE */
+@media (max-width: 950px) {
+  .header {
+    padding: 18px;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .logo-img {
+    width: 240px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr;
+    padding: 45px 25px 120px;
+  }
+
+  .hero-card h1 {
+    font-size: 38px;
+  }
+
+  .hero-card p {
+    font-size: 22px;
+  }
+
+  .person-wrap {
+    justify-self: center;
+    margin-top: 30px;
+  }
+
+  .person {
+    width: 360px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="header">
+  <nav class="nav" aria-label="Main Navigation">
+
+
+    <div class="logo-wrap">
+      <img
+        class="logo-img"
+        src="logo.png"
+        alt="David Schweikert campaign logo"
+      >
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#media">Media</a></li>
+      <li><a href="#issues">Issues</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a class="donate-link" href="#contact">Join Us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main-content">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-content">
+
+      <!-- 左边文字卡片 -->
+      <div class="hero-card">
+        <h1 id="hero-title">Leadership for Governor</h1>
+
+        <p>
+          I came to Washington to fight for the values that make our country
+          unique – for the economic freedom that gives
+          <strong>life to the American Dream.</strong>
+        </p>
+
+        <div class="hero-buttons">
+          <a class="btn btn-gold" href="#issues">View Issues</a>
+          <a class="btn btn-outline" href="#contact">Join the Campaign</a>
+        </div>
+      </div>
+
+
+      <div class="person-wrap">
+        <img
+          class="person"
+          src="david-schweikert.png"
+          alt="David Schweikert standing with arms crossed"
+        >
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About David</h2>
+      <p class="lead">
+        David Schweikert has focused on fiscal responsibility, economic freedom,
+        healthcare innovation, and public service. This page combines the formal
+        structure of an official congressional website with the bold visual style
+        of a campaign website.
+      </p>
+    </div>
+  </section>
+
+  <section id="issues" class="section">
+    <div class="container">
+      <h2>Key Issues</h2>
+      <p class="lead">
+        Clear priorities help voters understand the campaign quickly and easily.
+      </p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>Economic Freedom</h3>
+          <p>Support families, small businesses, and job creation across Arizona.</p>
+        </article>
+
+        <article class="card">
+          <h3>Fiscal Responsibility</h3>
+          <p>Fight wasteful spending and protect taxpayer dollars.</p>
+        </article>
+
+        <article class="card">
+          <h3>Healthcare Innovation</h3>
+          <p>Lower costs through innovation, transparency, and better access.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section accessibility">
+    <div class="container">
+      <h2>Designed for Accessibility</h2>
+      <ul>
+        <li>Keyboard users can navigate with Tab and Enter.</li>
+        <li>Links and buttons show a clear yellow focus outline.</li>
+        <li>High contrast deep blue, white, and gold colors improve readability.</li>
+        <li>Images include alt text for screen reader users.</li>
+        <li>Large text and large buttons support users with low vision.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="media" class="section">
+    <div class="container">
+      <h2>Media</h2>
+      <p class="lead">
+        Campaign updates, public statements, and community news can be placed here.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact" class="section contact">
+    <div class="container">
+      <h2>Join the Campaign</h2>
+      <p class="lead">
+        This form uses clear labels so screen readers can identify every field.
+      </p>
+
+      <form aria-label="Campaign contact form">
+        <label for="name">Full Name</label>
+        <input id="name" name="name" type="text" autocomplete="name">
+
+        <label for="email">Email Address</label>
+        <input id="email" name="email" type="email" autocomplete="email">
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message"></textarea>
+
+        <button type="submit">Submit Support</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>Schweikert for Governor</p>
+  <p>Accessible campaign-style website project.</p>
+</footer>
+
+</body>
+</html>
